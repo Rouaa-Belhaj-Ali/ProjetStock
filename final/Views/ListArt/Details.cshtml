@@ -1,0 +1,78 @@
+﻿@model AppStock.Models.Article
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+<style>
+    .dl-horizontal dt {
+        text-align: left;
+    }
+
+    .table {
+        width: 50%;
+    }
+
+        .table thead > tr > th, .table tbody > tr > th, .table tfoot > tr > th, .table thead > tr > td, .table tbody > tr > td, .table tfoot > tr > td {
+            border-top: 0px solid #dddddd;
+        }
+</style>
+
+<h3>Détails d'article</h3>
+	
+<div>
+    <hr />
+
+    <table class="table table-user-information">
+        <tbody>
+            <tr>
+                <td><b>@Html.DisplayNameFor(model => model.reference)  </b></td>
+                <td> @Html.DisplayFor(model => model.reference) </td>
+            </tr>
+            <tr>
+                <td><b> @Html.DisplayNameFor(model => model.nom_article) </b></td>
+                <td> @Html.DisplayFor(model => model.nom_article) </td>
+            </tr>
+            <tr>
+                <td><b> @Html.DisplayNameFor(model => model.famille.nom_famille) </b></td>
+                <td> @Html.DisplayFor(model => model.famille.nom_famille) </td>
+            </tr>
+            <tr>
+                <td><b> @Html.DisplayNameFor(model => model.quantite) </b></td>
+                <td> @Html.DisplayFor(model => model.quantite) </td>
+            </tr>
+            <tr>
+                <td><b> @Html.DisplayNameFor(model => model.observation) </b></td>
+                <td> @Html.DisplayFor(model => model.observation) </td>
+            </tr>
+            <tr>
+                <td><b> @Html.DisplayName("Disponibilité") </b></td>
+                <td>
+                    
+                    @{
+                        int x = Model.quantite;
+                        if (x > 0)
+                        {
+
+                            <span class="label label-success">Disponible</span>
+                        }
+                        else
+                            if (x <= 0)
+                            {
+
+                                <span class="label label-danger">non disponible</span>
+                            }
+
+                    } 
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <hr />
+</div>
+<p>
+   
+    @Html.ActionLink("Retour à la liste", "Index")
+</p>

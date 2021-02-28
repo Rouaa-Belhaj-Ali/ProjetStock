@@ -1,0 +1,65 @@
+﻿@model AppStock.Models.Commande
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+<style>
+    .dl-horizontal dt {
+        text-align: left;
+    }
+
+    .table {
+        width: 50%;
+    }
+
+        .table thead > tr > th, .table tbody > tr > th, .table tfoot > tr > th, .table thead > tr > td, .table tbody > tr > td, .table tfoot > tr > td {
+            border-top: 0px solid #dddddd;
+        }
+</style>
+
+<h3>Détails de commande</h3>
+
+<div>
+    <hr />
+
+    <table class="table table-user-information">
+        <tbody>
+            <tr>
+                <td><b>@Html.DisplayNameFor(model => model.reference_commande)</b></td>
+                <td>@Html.DisplayFor(model => model.reference_commande)</td>
+            </tr>
+            <tr>
+                <td><b>@Html.DisplayNameFor(model => model.date)</b></td>
+                <td>@Html.DisplayFor(model => model.date)</td>
+            </tr>
+            <tr>
+                <td><b>@Html.DisplayNameFor(model => model.fournisseur.nom_fournisseur)</b></td>
+                <td>@Html.DisplayFor(model => model.fournisseur.nom_fournisseur)</td>
+            </tr>
+            <tr>
+                <td><b>@Html.DisplayNameFor(model => model.article.nom_article)</b></td>
+                <td>@Html.DisplayFor(model => model.article.nom_article)</td>
+            </tr>
+            <tr>
+                <td><b>@Html.DisplayNameFor(model => model.quantite)</b></td>
+                <td>@Html.DisplayFor(model => model.quantite)</td>
+            </tr>
+            <tr>
+                <td><b>@Html.DisplayNameFor(model => model.observation)</b></td>
+                <td>@Html.DisplayFor(model => model.observation)</td>
+            </tr>
+
+
+        </tbody>
+    </table>
+    <hr />
+</div>
+
+<p>
+    @Html.ActionLink("Editer", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary" })
+    | @Html.ActionLink("Imprimer", "details", new { id = Model.Id }, new { @class = "btn btn-warning",  onclick = "window.print();"  }) |
+    @Html.ActionLink("Retour à la liste", "Index") 
+ 
+</p>

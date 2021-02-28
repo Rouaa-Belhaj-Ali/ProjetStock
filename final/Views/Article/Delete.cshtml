@@ -1,0 +1,70 @@
+﻿@model AppStock.Models.Article
+
+@{
+    ViewBag.Title = "Delete";
+}
+<style>
+    .dl-horizontal dt {
+        text-align: left;
+    }
+</style>
+
+
+<h2>Suppression</h2>
+
+<h3>Êtes-vous sûr de vouloir supprimer ce fournisseur ?</h3>
+<div>
+   
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.reference)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.reference)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.nom_article)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nom_article)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.famille.nom_famille)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.famille.nom_famille)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.observation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.observation)
+        </dd>
+      
+
+        
+
+        <dt>
+            @Html.DisplayNameFor(model => model.quantite)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.quantite)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+         <div class="form-actions no-color">
+            <input type="submit" value="Supprimer" class="btn btn-danger" /> |
+            @Html.ActionLink("Retour à la liste", "Index")</div>
+    }
+</div>

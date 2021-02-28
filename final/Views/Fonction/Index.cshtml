@@ -1,0 +1,33 @@
+﻿@model IEnumerable<AppStock.Models.Fonction>
+
+@{
+    ViewBag.Title = "Fonction";
+}
+
+<h2>Fonctions</h2>
+
+<p>
+    @Html.ActionLink("Ajouter nouveau fonction", "Create")
+</p>
+<table class="table">
+    <tr class="tr2">
+        <th>
+            @Html.DisplayNameFor(model => model.nom_fonction)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nom_fonction)
+        </td>
+        <td>
+            @Html.ActionLink("Editer", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Détails", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Supprimer", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

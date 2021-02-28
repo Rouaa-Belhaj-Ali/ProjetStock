@@ -1,0 +1,67 @@
+﻿@model IEnumerable<AppStock.Models.Commande>
+
+@{
+    ViewBag.Title = "Commande";
+}
+
+<h2>Commandes</h2>
+
+<p>
+    @Html.ActionLink("Ajouter nouveau commande", "Create")
+</p>
+<table class="table">
+    <tr class="tr2">
+        <th>
+            @Html.DisplayNameFor(model => model.reference_commande)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fournisseur.nom_fournisseur)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.article.nom_article)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.quantite)
+        </th> 
+        <th>
+            @Html.DisplayNameFor(model => model.observation)
+        </th>  
+        
+      
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.reference_commande)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fournisseur.nom_fournisseur)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.article.nom_article)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.quantite)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.observation)
+        </td>
+       
+        <td>
+            @Html.ActionLink("Editer", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Détails", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Supprimer", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
+

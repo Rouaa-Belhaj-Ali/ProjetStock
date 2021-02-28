@@ -1,0 +1,173 @@
+﻿@{
+    ViewBag.Title = "Accueil";
+}
+
+@model IEnumerable<AppStock.Models.Fournisseur>
+
+@{
+    var db = Database.Open("database");
+    var dbdata2 = db.Query("SELECT * FROM Articles").Count();
+    var dbdata1 = db.Query("SELECT * FROM Employees").Count();
+    var dbdata4 = db.Query("SELECT * FROM Commandes").Count();
+    var dbdata3 = db.Query("SELECT * FROM Mvtarticles").Count();
+    var dbdata5 = db.Query("SELECT * FROM Fournisseurs").Count();
+
+    var emp = ViewBag.Count;
+    var art = ViewBag.Count;
+    var tran = ViewBag.Count;
+    var com = ViewBag.Count;
+    var four = ViewBag.Count;
+
+    emp = dbdata1;
+    art = dbdata2;
+    tran = dbdata3;
+    com = dbdata4;
+    four = dbdata5;
+
+}
+
+
+
+<br />
+
+<style>
+   
+
+    body {
+        color: #5f5f5f;
+    }
+
+  
+    .row {
+        margin-top: 50px;
+    }
+
+    .btn-lg {
+        padding: 5px 10px;
+    }
+    .text-muted {
+        color: #333232;
+    }
+
+    .btn-default {
+        color: #b94a48;
+       
+    }
+    .well {
+        background-color: rgba(153, 153, 153, 0.02);
+    }
+
+   
+</style>
+
+
+
+@{
+
+    var dbdata = db.Query("SELECT * FROM Articles");
+
+}
+
+@foreach (var row in dbdata)
+{
+    if (@row.quantite <= 3 && @row.quantite > 0)
+    {
+
+        <div class="alert alert-warning alert-dismissible fade in" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button> <strong>Stock bas!</strong> de l'article <strong>@row.nom_article</strong>. </div>
+
+    }
+
+    if (@row.quantite == 0)
+    {
+
+        <div class="alert alert-danger alert-dismissible fade in" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button> <strong>Stock vide!</strong> de l'article <strong>@row.nom_article</strong>. </div>
+    }
+    <br />
+
+}
+
+
+
+<div class="row">
+
+    <div class="col-sm-3">
+        <div class="hero-widget well well-sm">
+            <div class="icon">
+                <i class="glyphicon glyphicon-user"></i>
+            </div>
+            <div class="text">
+                <var>      @emp</var>
+                <label class="text-muted">Employées</label>
+            </div>
+            <div class="options">
+                <a href="../employee/index" class="btn btn-default btn-lg"><i class="glyphicon glyphicon-search"></i> Accéder</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="hero-widget well well-sm">
+            <div class="icon">
+                <i class="glyphicon glyphicon-save"></i>
+            </div>
+            <div class="text">
+                <var>@art</var>
+                <label class="text-muted">Articles</label>
+            </div>
+            <div class="options">
+                <a href="../article/index" class="btn btn-default btn-lg"><i class="glyphicon glyphicon-search"></i> Accéder</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-sm-3">
+        <div class="hero-widget well well-sm">
+            <div class="icon">
+                <i class="glyphicon glyphicon-open"></i>
+            </div>
+            <div class="text">
+                <var>@tran</var>
+                <label class="text-muted">Transactions</label>
+            </div>
+            <div class="options">
+                <a href="../Mvtarticle/index" class="btn btn-default btn-lg"><i class="glyphicon glyphicon-search"></i> Accéder</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-3">
+        <div class="hero-widget well well-sm">
+            <div class="icon">
+                <i class="glyphicon glyphicon-list-alt"></i>
+            </div>
+            <div class="text">
+                <var>@com</var>
+                <label class="text-muted">Commandes</label>
+            </div>
+            <div class="options">
+                <a href="../commande/index" class="btn btn-default btn-lg"><i class="glyphicon glyphicon-search"></i> Accéder</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-sm-3">
+        <div class="hero-widget well well-sm">
+            <div class="icon">
+                <i class="glyphicon glyphicon-phone-alt"></i>
+            </div>
+            <div class="text">
+                <var>@four</var>
+                <label class="text-muted">Fournisseurs</label>
+            </div>
+            <div class="options">
+                
+                <a href="../fournisseur/index" class="btn btn-default btn-lg"><i class="glyphicon glyphicon-search"></i> Accéder</a>
+            </div>
+        </div>
+    </div>
+
+   
+   
+
+    </div>

@@ -1,0 +1,67 @@
+﻿@model AppStock.Models.Employee
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+<style>
+    .dl-horizontal dt {
+        text-align: left;
+    }
+
+    .table {
+        width: 50%;
+    }
+
+        .table thead > tr > th, .table tbody > tr > th, .table tfoot > tr > th, .table thead > tr > td, .table tbody > tr > td, .table tfoot > tr > td {
+            border-top: 0px solid #dddddd;
+        }
+</style>
+
+<h3>Détails d'employée</h3>
+
+
+
+
+<hr />
+<table class="table table-user-information">
+    <tbody>
+        <tr>
+            <td><b>@Html.DisplayNameFor(model => model.matricule) </b></td>
+            <td> @Html.DisplayFor(model => model.matricule) </td>
+        </tr>
+        <tr>
+            <td><b>@Html.DisplayNameFor(model => model.fonction.nom_fonction) </b></td>
+            <td> @Html.DisplayFor(model => model.fonction.nom_fonction) </td>
+        </tr>
+        <tr>
+            <td><b> @Html.DisplayNameFor(model => model.nom) </b></td>
+            <td>@Html.DisplayFor(model => model.nom)  </td>
+        </tr>
+        <tr>
+            <td><b> @Html.DisplayNameFor(model => model.prenom) </b></td>
+            <td> @Html.DisplayFor(model => model.prenom) </td>
+        </tr>
+        <tr>
+            <td><b> @Html.DisplayNameFor(model => model.email) </b></td>
+            <td><a href="#">@Html.DisplayFor(model => model.email)  </a></td>
+        </tr>
+        <tr>
+            <td><b> @Html.DisplayNameFor(model => model.identifiant) </b></td>
+            <td> @Html.DisplayFor(model => model.identifiant) </td>
+        </tr>
+        <tr>
+            <td><b> @Html.DisplayNameFor(model => model.motdepasse)  </b></td>
+            <td>  @Html.DisplayFor(model => model.motdepasse)  </td>
+        </tr>
+
+    </tbody>
+</table>
+<hr />
+
+<p>
+    @Html.ActionLink("Editer", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary" })
+    |
+    @Html.ActionLink("Retour à la liste", "Index")
+</p>

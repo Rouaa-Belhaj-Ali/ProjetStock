@@ -1,0 +1,60 @@
+﻿@model AppStock.Models.Employee
+
+@{
+    ViewBag.Title = "login";
+}
+<style>
+   
+</style>
+
+<h2>Se connecter.</h2>
+<h4>Utilisez un compte local pour vous connecter.</h4>
+<hr />
+<br /><br />
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+      
+       
+        @Html.ValidationSummary(true)
+        @if (ViewBag.Message1 != null || ViewBag.Message != null)
+        {
+            <div class="form-group">
+                <div class="col-md-10">@ViewBag.Message1 </div>
+                <div class="col-md-10">@ViewBag.Message </div>
+            </div>
+        }
+       
+    
+            
+             <div class="form-group">
+            @Html.LabelFor(model => model.identifiant, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.identifiant, new { @class="form-control"})
+                @Html.ValidationMessageFor(model => model.identifiant)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.motdepasse, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.PasswordFor(model => model.motdepasse, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.motdepasse)
+            </div>
+        </div>
+
+      
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Connexion" class="btn btn-info btn-block" />
+            </div>
+        </div>
+    </div>
+    <br /><br />
+    <hr />
+}
+
+

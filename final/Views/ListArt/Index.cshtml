@@ -1,0 +1,85 @@
+﻿@model IEnumerable<AppStock.Models.Article>
+
+@{
+    ViewBag.Title = "Articles";
+}
+
+
+<h2>Articles</h2>
+
+<p>
+ 
+</p>
+<table class="table">
+    <tr class="tr2">
+        <th>
+            @Html.DisplayNameFor(model => model.famille.nom_famille)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nom_article)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.reference)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.quantite)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.observation)
+        </th>
+        <th>
+            @Html.DisplayName("Disponibilité")
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.famille.nom_famille)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nom_article)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.reference)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.quantite)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.observation)
+        </td>
+        <td>
+
+            @{
+    int x = item.quantite;
+    if (x > 0)
+    {
+
+        <span class="label label-success">Disponible</span>
+    }
+    else
+        if (x <= 0)
+        {
+
+            <span class="label label-danger">non disponible</span>
+        }
+
+            }
+
+        </td>
+
+
+        <td>
+           
+            @Html.ActionLink("Détails", "Details", new { id = item.Id }) 
+          
+
+        </td>
+
+    </tr>
+}
+
+</table>

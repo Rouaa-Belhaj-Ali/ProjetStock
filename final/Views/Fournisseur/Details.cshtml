@@ -1,0 +1,68 @@
+﻿@model AppStock.Models.Fournisseur
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<style>
+    .dl-horizontal dt {
+        text-align: left;
+    }
+
+    .table {
+        width: 50%;
+    }
+
+        .table thead > tr > th, .table tbody > tr > th, .table tfoot > tr > th, .table thead > tr > td, .table tbody > tr > td, .table tfoot > tr > td {
+            border-top: 0px solid #dddddd;
+        }
+</style>
+
+<h3>Détails du fournisseur</h3>
+
+<div>
+
+
+
+
+
+
+    <hr />
+
+    <table class="table table-user-information">
+        <tbody>
+            <tr>
+                <td><b>@Html.DisplayNameFor(model => model.matricule)</b></td>
+                <td>@Html.DisplayFor(model => model.matricule)</td>
+            </tr>
+            <tr>
+                <td><b>@Html.DisplayNameFor(model => model.nom_fournisseur)</b></td>
+                <td>@Html.DisplayFor(model => model.nom_fournisseur)</td>
+            </tr>
+            <tr>
+                <td><b>@Html.DisplayNameFor(model => model.adresse)</b></td>
+                <td>@Html.DisplayFor(model => model.adresse)</td>
+            </tr>
+            <tr>
+                <td><b>@Html.DisplayNameFor(model => model.email)</b></td>
+                <td><a href="#">@Html.DisplayFor(model => model.email)</a></td>
+            </tr>
+            <tr>
+                <td><b>@Html.DisplayNameFor(model => model.telephone)</b></td>
+                <td>@Html.DisplayFor(model => model.telephone)</td>
+            </tr>
+
+
+        </tbody>
+    </table>
+
+    <hr />
+
+</div>
+
+
+<p>
+    @Html.ActionLink("Editer", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary" })
+    |
+    @Html.ActionLink("Retour à la liste", "Index")
+</p>

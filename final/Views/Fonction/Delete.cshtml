@@ -1,0 +1,41 @@
+﻿@model AppStock.Models.Fonction
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+
+<style>
+    .dl-horizontal dt {
+        text-align: left;
+    }
+</style>
+
+
+<h2>Suppression</h2>
+
+<h3>Êtes-vous sûr de vouloir supprimer cette fonction ?</h3>
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nom_fonction)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nom_fonction)
+        </dd>
+
+    </dl>
+    <hr />
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+         <div class="form-actions no-color">
+            <input type="submit" value="Supprimer" class="btn btn-danger" /> |
+            @Html.ActionLink("Retour à la liste", "Index")
+        </div>
+    }
+</div>

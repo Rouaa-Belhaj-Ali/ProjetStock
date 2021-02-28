@@ -1,0 +1,16 @@
+﻿@model AppStock.Models.Article
+
+@{
+    ViewBag.Title = "ChartArticle2";
+}
+
+
+@{
+    var db = Database.Open("database");
+    var dbdata = db.Query("SELECT nom_article, quantite  FROM Articles");
+    var myChart = new Chart(width: 500, height: 300)
+
+   .AddTitle("Quantité de chaque article")
+   .AddSeries(chartType: "bar", xValue: dbdata, xField: "nom_article", yValues: dbdata, yFields: "quantite")
+   .Write();
+}

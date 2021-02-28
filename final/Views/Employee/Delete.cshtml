@@ -1,0 +1,90 @@
+﻿@model AppStock.Models.Employee
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<style>
+    .dl-horizontal dt {
+        text-align: left;
+    }
+</style>
+
+
+
+<h2>Suppression</h2>
+
+<h3>Êtes-vous sûr de vouloir supprimer ce employée ?</h3>
+<div>
+   
+    <hr />
+    <dl class="dl-horizontal">
+       
+
+        <dt>
+            @Html.DisplayNameFor(model => model.matricule)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.matricule)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.fonction.nom_fonction)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fonction.nom_fonction)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.prenom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.prenom)
+        </dd>
+    
+
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.identifiant)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.identifiant)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.motdepasse)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.motdepasse)
+        </dd>
+
+    </dl>
+    <hr />
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Supprimer" class="btn btn-danger" /> |
+            @Html.ActionLink("Retour à la liste", "Index")
+        </div>
+    }
+</div>

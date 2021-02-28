@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - GESTION DES STOCKS</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <style>
+        .alert {
+            margin-bottom: -10px;
+        }
+
+        .tr2 {
+            color: #b94a48;
+        }
+
+
+        .navbar-inverse .navbar-nav > li > a {
+            color: #fff;
+        }
+
+        .navbar-inverse .navbar-nav > .dropdown > a .caret {
+            border-top-color: #fff;
+        }
+
+        .navbar-inverse .navbar-brand {
+            color: #fff;
+        }
+
+        .navbar-inverse {
+            background-color: #b94a48;
+            border-color: #b94a48;
+        }
+
+            .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+                color: #ffffff;
+                background-color: #5f5f5f;
+            }
+    </style>
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("GESTION DES STOCKS", "Index", "Home", null, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    @if (Session["matricule"] != null && Session["fonction"].ToString() == "magasinier")
+                    {
+                        <li>@Html.ActionLink("Employées", "Index", "Employee")</li>
+                        <li>@Html.ActionLink("Articles", "Index", "Article")</li>
+                        <li>@Html.ActionLink("Transactions", "Index", "Mvtarticle")</li>
+                        <li>@Html.ActionLink("Commandes", "Index", "Commande")</li>
+                        <li>@Html.ActionLink("Fournisseurs", "Index", "Fournisseur")</li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Fonction d'employée", "Index", "Fonction")</li>
+                                <li role="separator" class="divider"></li>
+                                <li>@Html.ActionLink("Famille d'article", "Index", "Famille")</li>
+                                <li role="separator" class="divider"></li>
+                                <li>@Html.ActionLink("Opération d'article", "Index", "Operation")</li>
+                                <li role="separator" class="divider"></li>
+                                <li>@Html.ActionLink("Machine", "Index", "Machine")</li>
+                            </ul>
+                        </li>
+
+                    }
+                    
+                </ul>
+@if (Session["matricule"] != null)
+                    {
+               
+   
+
+    <ul class="nav navbar-nav navbar-right">
+        <li>
+            @Html.ActionLink("Bonjour " + Session["username"].ToString() + " !", "Index", "Home")
+        </li>
+        <li>
+        @Html.ActionLink("Se déconnecter", "LogOff", "Home")
+       </li>
+    </ul>
+}
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+
+    </div>
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+
+
+
+

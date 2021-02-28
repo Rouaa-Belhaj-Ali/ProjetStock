@@ -1,0 +1,80 @@
+﻿@model AppStock.Models.Article
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<style>
+    .form-horizontal .control-label {
+        text-align: left;
+    }
+</style>
+
+<h3>Editer un article</h3>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+     
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.reference, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.reference, new { @class = "form-control", @readonly = "readonly" })
+                @Html.ValidationMessageFor(model => model.reference)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.nom_article, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.nom_article, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.nom_article)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FamilleID, "FAMILLE", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("FamilleID", null, String.Empty, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.FamilleID)
+            </div>
+        </div>
+       
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.quantite, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.quantite, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.quantite)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.observation, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.observation, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.observation)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-primary btn-block" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Retour à la liste", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

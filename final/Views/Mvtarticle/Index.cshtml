@@ -1,0 +1,87 @@
+﻿@model IEnumerable<AppStock.Models.Mvtarticle>
+
+@{
+    ViewBag.Title = "Transaction";
+}
+
+<h2>Transactions</h2>
+
+<p>
+    @Html.ActionLink("Ajouter nouveau transaction", "Create")
+</p>
+<table class="table">
+    <tr class="tr2">
+        <th>
+            @Html.DisplayNameFor(model => model.reference)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.operation.nom_operation)
+        </th>
+        <th>
+            @Html.DisplayName("MATRICULE EMPLOYEE")
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.article.nom_article)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.quantite)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.machine.nom_machine)
+        </th>
+       
+        <th>
+            @Html.DisplayNameFor(model => model.observation)
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.reference)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.operation.nom_operation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.employee.matricule)
+                @Html.DisplayName("-")
+                @Html.DisplayFor(modelItem => item.employee.nom)
+                @Html.DisplayFor(modelItem => item.employee.prenom)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.article.nom_article)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.quantite)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.machine.nom_machine)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.observation)
+            </td>
+
+            <td>
+                @Html.ActionLink("Editer", "Edit", new { id = item.id }) |
+                @Html.ActionLink("Détails", "Details", new { id = item.id }) |
+                @Html.ActionLink("Supprimer", "Delete", new { id = item.id })
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+
+

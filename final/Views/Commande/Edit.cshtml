@@ -1,0 +1,86 @@
+﻿@model AppStock.Models.Commande
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+
+<style>
+    .form-horizontal .control-label {
+        text-align: left;
+    }
+</style>
+
+<h3>Editer un commande</h3>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+  
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.reference_commande, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.reference_commande, new { @class = "form-control", @readonly = "readonly" })
+                @Html.ValidationMessageFor(model => model.reference_commande)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.date, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.date, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.date)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FournisseurID, "FOURNISSEUR", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("FournisseurID", null, String.Empty, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.FournisseurID)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ArticleID, "ARTICLE", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("ArticleID", null, String.Empty, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ArticleID)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.quantite, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.quantite, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.quantite)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.observation, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.observation, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.observation)
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Editer" class="btn btn-block btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+<hr />
+<div>
+    @Html.ActionLink("Retour à la liste", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

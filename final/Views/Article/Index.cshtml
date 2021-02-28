@@ -1,0 +1,113 @@
+﻿@model IEnumerable<AppStock.Models.Article>
+
+@{
+    ViewBag.Title = "Article";
+}
+
+@{
+    var db = Database.Open("database");
+    var dbdata = db.Query("SELECT * FROM Articles");
+  
+    }
+
+
+<h2>Articles</h2>
+
+<p>
+    @Html.ActionLink("Ajouter nouveau article", "Create")
+</p>
+<table class="table">
+    <tr class="tr2">
+        <th >
+            @Html.DisplayNameFor(model => model.reference)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nom_article)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.famille.nom_famille)
+        </th>
+      
+       
+        <th>
+            @Html.DisplayNameFor(model => model.quantite)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.observation)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.reference)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nom_article)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.famille.nom_famille)
+        </td>
+      
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.quantite)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.observation)
+        </td>
+        <td>
+            @Html.ActionLink("QTE +", "AddQte", new { id = item.Id }) |
+            
+            @Html.ActionLink("Editer", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Détails", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Supprimer", "Delete", new { id=item.Id })
+            
+        </td>
+    </tr>
+}
+
+</table>
+
+@foreach (var row in dbdata)
+{
+    if (@row.quantite <= 3 && @row.quantite > 0)
+    {
+
+        <div class="alert alert-warning alert-dismissible fade in" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button> <strong>Stock bas!</strong> de l'article <strong>@row.nom_article</strong>. </div>
+
+    }
+
+    if (@row.quantite == 0)
+    {
+
+        <div class="alert alert-danger alert-dismissible fade in" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button> <strong>Stock vide!</strong> de l'article <strong>@row.nom_article</strong>. </div>
+    }
+    <br />
+
+}
+
+
+<div><br /></div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <center><b>Graphiques</b></center>
+    </div>
+    <div class="panel-body">
+        <div class="table-responsive">
+          
+            <table>
+                <tr>
+                    <td>
+                        <img src="../Home/chartArticle" />
+                    </td>
+                    <td>
+                        <img src="../Home/chartArticle2" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

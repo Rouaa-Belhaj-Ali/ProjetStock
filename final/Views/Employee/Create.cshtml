@@ -1,0 +1,90 @@
+﻿@model AppStock.Models.Employee
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<style>
+    .form-horizontal .control-label {
+        text-align: left;
+    }
+</style>
+
+<h3>Création d'un nouveau employée</h3>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        
+        <hr />
+        @Html.ValidationSummary(true)
+
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.FonctionID, "FONCTION", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+
+                @Html.DropDownList("FonctionID", null, String.Empty, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.FonctionID)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.nom, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.nom, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.nom)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.prenom, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+           @Html.TextBoxFor(model => model.prenom, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.prenom)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.email, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+               @Html.TextBoxFor(model => model.email, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.email)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.identifiant, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+               @Html.TextBoxFor(model => model.identifiant, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.identifiant)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.motdepasse, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+               @Html.TextBoxFor(model => model.motdepasse, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.motdepasse)
+            </div>
+        </div>
+
+     
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Ajouter" class="btn btn-success btn-block" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Retour à la liste", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

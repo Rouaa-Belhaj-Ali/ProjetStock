@@ -1,0 +1,117 @@
+﻿@model AppStock.Models.Mvtarticle
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<style>
+    .form-horizontal .control-label {
+        text-align: left;
+    }
+
+    select#OperationID {
+        display: none;
+    }
+    select#ArticleID {
+        display: none;
+    }
+
+    
+</style>
+
+<h3>Editer une transaction</h3>
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.id)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.reference, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.reference, new { @class = "form-control", @readonly = "readonly" })
+                @Html.ValidationMessageFor(model => model.reference)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.OperationID, "OPERATION", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("OperationID", null, String.Empty, new { @class = "form-control", @readonly = "readonly" })
+                @Html.TextBoxFor(model => model.operation.nom_operation, new { @class = "form-control", @readonly = "readonly" })
+                  @Html.ValidationMessageFor(model => model.OperationID)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.EmployeeID, "EMPLOYEE", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("EmployeeID", null, String.Empty, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.EmployeeID)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.date, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.date, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.date)
+            </div>
+        </div>
+
+       
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ArticleID, "ARTICLE", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("ArticleID", null, String.Empty, new { @class = "form-control", @readonly = "readonly" })
+                @Html.TextBoxFor(model => model.article.nom_article, new { @class = "form-control", @readonly = "readonly" })
+                @Html.ValidationMessageFor(model => model.ArticleID)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.quantite, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.quantite, new { @class = "form-control", @readonly = "readonly" })
+                @Html.ValidationMessageFor(model => model.quantite)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MachineID, "MACHINE", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("MachineID", null, String.Empty, new { @class = "form-control" })
+              
+                @Html.ValidationMessageFor(model => model.MachineID)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.observation, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.observation, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.observation)
+            </div>
+        </div>
+       
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Editer" class="btn btn-primary btn-block" />
+            </div>
+        </div>
+    </div>
+}
+<hr />
+<div>
+    @Html.ActionLink("Retour à la liste", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,46 @@
+﻿@model AppStock.Models.Famille
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<style>
+    .dl-horizontal dt {
+        text-align: left;
+    }
+
+    .table {
+        width: 50%;
+    }
+
+        .table thead > tr > th, .table tbody > tr > th, .table tfoot > tr > th, .table thead > tr > td, .table tbody > tr > td, .table tfoot > tr > td {
+            border-top: 0px solid #dddddd;
+        }
+</style>
+
+<h3>Détails de famille d'article</h3>
+
+<div>
+    <hr />
+
+
+
+    <table class="table table-user-information">
+        <tbody>
+            <tr>
+                <td><b>@Html.DisplayNameFor(model => model.nom_famille) </b></td>
+                <td> @Html.DisplayFor(model => model.nom_famille)</td>
+            </tr>
+            <tr>
+
+
+
+
+        </tbody>
+    </table>
+    <hr />
+</div>
+<p>
+    @Html.ActionLink("Editer", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary" }) |
+    @Html.ActionLink("Retour à la liste", "Index")
+</p>

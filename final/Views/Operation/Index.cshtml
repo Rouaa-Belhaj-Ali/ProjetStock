@@ -1,0 +1,33 @@
+﻿@model IEnumerable<AppStock.Models.Operation>
+
+@{
+    ViewBag.Title = "Operation";
+}
+
+<h2>Opérations</h2>
+
+<p>
+    @Html.ActionLink("Ajouter nouveau opération", "Create")
+</p>
+<table class="table">
+    <tr class="tr2">
+        <th>
+            @Html.DisplayNameFor(model => model.nom_operation)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nom_operation)
+        </td>
+        <td>
+            @Html.ActionLink("Editer", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Détails", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Supprimer", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
